@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f6f0">
+    <meta name="description" content="Alex Morgan is an independent designer and front-end developer creating thoughtful digital experiences.">
+    <title>Alex Morgan — Designer & Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --paper: #f5f6f0;
+            --ink: #20221f;
+            --muted: #6b7068;
+            --line: #d9dcd3;
+            --lime: #d7f36b;
+            --orange: #ff7656;
+            --display: "Space Grotesk", sans-serif;
+            --body: "DM Sans", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+        button { color: inherit; font: inherit; }
+        .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+
+        .site-header { height: 82px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+        .nav { display: flex; align-items: center; justify-content: space-between; }
+        .wordmark { display: inline-flex; align-items: center; gap: 10px; font: 700 18px var(--display); letter-spacing: 0; }
+        .mark { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); font: 700 15px var(--display); }
+        .nav-links { display: flex; align-items: center; gap: 34px; font-size: 13px; font-weight: 600; }
+        .nav-links a:not(.nav-cta):hover, .text-link:hover { color: #627a12; }
+        .nav-cta { display: inline-flex; align-items: center; gap: 9px; padding: 12px 17px; border: 1px solid var(--ink); border-radius: 3px; transition: background .2s, color .2s; }
+        .nav-cta:hover { background: var(--ink); color: var(--paper); }
+        .menu-toggle { display: none; border: 0; background: transparent; padding: 8px; cursor: pointer; }
+
+        .hero { min-height: 612px; display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 58px; padding-block: 70px 82px; }
+        .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 24px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #80a821; box-shadow: 0 0 0 4px #80a82120; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1 { max-width: 650px; margin-bottom: 23px; font: 600 clamp(54px, 6.5vw, 84px)/.99 var(--display); letter-spacing: 0; }
+        h1 span { position: relative; z-index: 0; white-space: nowrap; }
+        h1 span::after { position: absolute; z-index: -1; right: -3px; bottom: 5px; left: -3px; height: 20px; background: var(--lime); content: ""; transform: rotate(-1deg); }
+        .hero-copy { max-width: 450px; margin-bottom: 30px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+        .hero-actions { display: flex; align-items: center; gap: 25px; }
+        .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 12px; padding: 0 19px; border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: white; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+        .button:hover { transform: translateY(-2px); background: #3a4035; }
+        .text-link { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; }
+        .arrow { font-size: 17px; line-height: 1; }
+        .hero-art { position: relative; width: 100%; max-width: 460px; justify-self: end; }
+        .portrait { display: block; width: 100%; aspect-ratio: 4 / 4.35; object-fit: cover; object-position: center 42%; filter: saturate(.78); }
+        .image-frame { position: absolute; inset: 14px -14px -14px 14px; z-index: -1; border: 1px solid var(--ink); }
+        .availability { position: absolute; right: -24px; bottom: 30px; display: flex; align-items: center; gap: 10px; padding: 13px 16px; background: var(--lime); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .availability span { font-size: 18px; }
+        .hero-index { position: absolute; top: 13px; left: -35px; color: var(--muted); font: 500 11px var(--display); writing-mode: vertical-rl; }
+
+        .projects { padding-block: 74px 96px; border-top: 1px solid var(--line); }
+        .section-top { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 36px; }
+        .section-kicker { margin-bottom: 10px; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        h2 { margin-bottom: 0; font: 600 42px/1.1 var(--display); letter-spacing: 0; }
+        .section-note { margin: 0 0 4px; color: var(--muted); font-size: 13px; }
+        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 42px 24px; }
+        .project { min-width: 0; }
+        .project-image { position: relative; overflow: hidden; aspect-ratio: 1.42; background: #e3e5dc; }
+        .project-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+        .project:hover .project-image img { transform: scale(1.035); }
+        .project-image .project-tag { position: absolute; right: 14px; bottom: 14px; padding: 9px 11px; background: var(--paper); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .project-info { display: flex; justify-content: space-between; gap: 16px; padding-top: 17px; }
+        .project-info h3 { margin-bottom: 5px; font: 600 21px var(--display); }
+        .project-info p { margin-bottom: 0; color: var(--muted); font-size: 12px; }
+        .project-year { padding-top: 5px; color: var(--muted); font-size: 11px; white-space: nowrap; }
+
+        .about { background: var(--ink); color: var(--paper); }
+        .about-inner { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; padding-block: 78px; }
+        .about-label { color: #bdc4b7; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .about h2 { max-width: 620px; margin-bottom: 20px; font-size: 38px; }
+        .about-copy { max-width: 590px; margin-bottom: 27px; color: #bdc4b7; font-size: 14px; line-height: 1.8; }
+        .about .text-link { color: var(--lime); }
+        .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+        .skill { padding: 8px 11px; border: 1px solid #555a51; border-radius: 2px; color: #e4e8de; font-size: 10px; }
+
+        .contact { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-block: 74px; }
+        .contact h2 { max-width: 540px; font-size: 44px; }
+        .contact h2 span { color: #718d17; }
+        .contact .button { flex: 0 0 auto; }
+        .footer { border-top: 1px solid var(--line); }
+        .footer-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 11px; }
+        .socials { display: flex; gap: 20px; color: var(--ink); font-weight: 600; }
+        .socials a:hover { color: #627a12; }
+
+        @media (min-width: 1400px) { .hero { min-height: 680px; } }
+        @media (max-width: 760px) {
+            .wrap { width: min(100% - 40px, 560px); }
+            .site-header { height: 70px; }
+            .menu-toggle { display: inline-grid; place-items: center; }
+            .nav-links { position: absolute; top: 69px; right: 0; left: 0; z-index: 5; display: none; align-items: stretch; gap: 0; padding: 8px 20px 18px; border-bottom: 1px solid var(--line); background: var(--paper); }
+            .nav-links.is-open { display: flex; flex-direction: column; }
+            .nav-links > a { padding: 13px 0; }
+            .nav-links .nav-cta { justify-content: center; margin-top: 8px; padding: 12px; }
+            .hero { min-height: 0; grid-template-columns: 1fr; gap: 50px; padding-block: 62px 72px; }
+            h1 { max-width: 520px; font-size: clamp(53px, 12vw, 76px); }
+            .hero-copy { font-size: 15px; }
+            .hero-art { width: calc(100% - 18px); max-width: 440px; justify-self: center; }
+            .portrait { aspect-ratio: 1.18; object-position: center 40%; }
+            .hero-index { left: -23px; }
+            .projects { padding-block: 60px 70px; }
+            h2 { font-size: 35px; }
+            .section-top { align-items: start; flex-direction: column; }
+            .project-grid { gap: 32px 16px; }
+            .project-image { aspect-ratio: 1.12; }
+            .project-info h3 { font-size: 17px; }
+            .project-info p { font-size: 11px; }
+            .about-inner { grid-template-columns: 1fr; gap: 24px; padding-block: 58px; }
+            .about h2 { font-size: 34px; }
+            .contact { align-items: start; flex-direction: column; padding-block: 58px; }
+            .contact h2 { font-size: 39px; }
+        }
+        @media (max-width: 430px) {
+            .wrap { width: calc(100% - 36px); }
+            .hero-actions { align-items: start; flex-direction: column; gap: 17px; }
+            .project-grid { grid-template-columns: 1fr; gap: 28px; }
+            .project-image { aspect-ratio: 1.35; }
+            .footer-inner { align-items: start; flex-direction: column; justify-content: center; padding-block: 19px; }
+            .socials { gap: 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav wrap" aria-label="Main navigation">
+            <a class="wordmark" href="#home" aria-label="Alex Morgan home"><span class="mark">a.</span> alex morgan</a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+                <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a class="nav-cta" href="mailto:hello@alexmorgan.design">Let's talk <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero wrap" id="home" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Independent designer & developer</p>
+                <h1 id="hero-title">Making the web feel a little more <span>human.</span></h1>
+                <p class="hero-copy">I turn thoughtful ideas into useful, beautifully crafted digital experiences. Working with good people, wherever you are.</p>
+                <div class="hero-actions">
+                    <a class="button" href="#work">Explore my work <span class="arrow" aria-hidden="true">↓</span></a>
+                    <a class="text-link" href="#about">A little about me <span class="arrow" aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+            <div class="hero-art">
+                <span class="hero-index">PORTFOLIO · 2025—26</span>
+                <img class="portrait" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" alt="Creative portrait in warm natural light">
+                <span class="image-frame" aria-hidden="true"></span>
+                <div class="availability"><span aria-hidden="true">✳</span> Available for select projects</div>
+            </div>
+        </section>
+
+        <section class="projects" id="work" aria-labelledby="work-title">
+            <div class="wrap">
+                <div class="section-top">
+                    <div><p class="section-kicker">A few things I've made</p><h2 id="work-title">Selected work</h2></div>
+                    <p class="section-note">A mix of strategy, design & development.</p>
+                </div>
+                <div class="project-grid">
+                    <a class="project" href="mailto:hello@alexmorgan.design?subject=Fieldwork%20project">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt="Bright, plant-filled creative studio interior" loading="lazy"><span class="project-tag">Digital experience</span></div>
+                        <div class="project-info"><div><h3>Fieldwork</h3><p>Brand direction, Web design, Development</p></div><span class="project-year">2025</span></div>
+                    </a>
+                    <a class="project" href="mailto:hello@alexmorgan.design?subject=Sunday%20Supply%20project">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1200&q=85" alt="Minimal skin-care bottles arranged in soft daylight" loading="lazy"><span class="project-tag">E-commerce</span></div>
+                        <div class="project-info"><div><h3>Sunday Supply</h3><p>Art direction, Shopify, Development</p></div><span class="project-year">2024</span></div>
+                    </a>
+                    <a class="project" href="mailto:hello@alexmorgan.design?subject=Open%20House%20project">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" alt="Calm modern living space with sculptural furniture" loading="lazy"><span class="project-tag">Brand & web</span></div>
+                        <div class="project-info"><div><h3>Open House</h3><p>Visual identity, Web design</p></div><span class="project-year">2024</span></div>
+                    </a>
+                    <a class="project" href="mailto:hello@alexmorgan.design?subject=Good%20Kind%20project">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=85" alt="Lush green leaves catching the afternoon sun" loading="lazy"><span class="project-tag">Digital product</span></div>
+                        <div class="project-info"><div><h3>Good Kind</h3><p>Product strategy, UX/UI, Development</p></div><span class="project-year">2023</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about" aria-labelledby="about-title">
+            <div class="about-inner wrap">
+                <p class="about-label">A bit about me</p>
+                <div>
+                    <h2 id="about-title">Curious by nature. Thoughtful by design.</h2>
+                    <p class="about-copy">I'm Alex, an independent creative partner for teams building things that matter. I bring design and front-end craft together early, so the final details feel as considered as the big idea. Small teams, open conversations, no precious egos.</p>
+                    <a class="text-link" href="mailto:hello@alexmorgan.design">More about working together <span class="arrow" aria-hidden="true">↗</span></a>
+                    <div class="skills" aria-label="Services"><span class="skill">Creative direction</span><span class="skill">Digital design</span><span class="skill">Front-end development</span><span class="skill">Design systems</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title">Have a good one in mind? <span>Let's make it real.</span></h2>
+            <a class="button" href="mailto:hello@alexmorgan.design">Start a conversation <span class="arrow" aria-hidden="true">↗</span></a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner wrap">
+            <span>© <span id="year">2026</span> Alex Morgan. Made with care.</span>
+            <div class="socials"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:hello@alexmorgan.design">Email ↗</a></div>
+        </div>
+    </footer>
+    <script>
+        const menuButton = document.querySelector('.menu-toggle');
+        const navigation = document.querySelector('.nav-links');
+
+        menuButton.addEventListener('click', () => {
+            const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', String(!isOpen));
+            menuButton.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+            navigation.classList.toggle('is-open', !isOpen);
+        });
+
+        navigation.addEventListener('click', (event) => {
+            if (event.target.closest('a')) {
+                menuButton.setAttribute('aria-expanded', 'false');
+                menuButton.setAttribute('aria-label', 'Open navigation');
+                navigation.classList.remove('is-open');
+            }
+        });
+
+        document.querySelector('#year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
